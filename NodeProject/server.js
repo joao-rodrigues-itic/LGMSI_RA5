@@ -95,6 +95,32 @@ function CalculatePositions(text, stringToSearch) {
   return array;
 }
 
+//Funcions noves per la activitat 2
+
+//Funcion per convertit xml a json amb la llibreria de manera compacta
+app.post("/convertXmlToJson2", (req, res) => {
+  const { data } = req.body;
+
+  var convert = require('xml-js');
+  let xml = data;
+  
+  var result1 = convert.xml2json(xml, {compact: true, spaces: 4});
+
+  res.json({ result1 });
+});
+
+//Funcion per convertit xml a json amb la llibreria de manera no compacta
+app.post("/convertXmlToJson3", (req, res) => {
+  const { data } = req.body;
+
+  var convert = require('xml-js');
+  let xml = data;
+  
+  var result2 = convert.xml2json(xml, {compact: false, spaces: 4});
+
+  res.json({ result2 });
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor a http://localhost:${PORT}`);
 });
