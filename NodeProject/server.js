@@ -124,3 +124,15 @@ app.post("/convertXmlToJson3", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor a http://localhost:${PORT}`);
 });
+
+
+//Funcions noves per la activitat 3
+
+app.post("/convertPokemon", async (req, res) =>{
+  const name = req.body.data;
+  const response = await fetch(`http://pokeapi.co/api/v2/pokemon/${name}`);
+  const pokemonJson = await response.json();
+
+  const result = pokemonJson;
+  res.json({ result });
+});
